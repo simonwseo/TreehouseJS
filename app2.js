@@ -11,6 +11,15 @@ for (let i = 0; i < myList.length; i++){
 //Selecting elements through their class Names
 const errorNotPurple = document.getElementsByClassName('error-not-purple');
 
-for (let i = 0; i < myList.length; i++){
+//Changes all elements with class name error-not-purple to red
+for (let i = 0; i < errorNotPurple.length; i++){
   errorNotPurple[i].style.color = 'red';
+}
+
+//selecting an entire group of elements using querySelectorAll
+//This example uses pseudo CSS class to select just the even items
+const evens = document.querySelectorAll('li:nth-child(even)');
+
+for (let i = 0; i < evens.length; i++){
+ evens[i].style.backgroundColor = 'lightgray';
 }
