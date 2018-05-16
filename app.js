@@ -1,4 +1,7 @@
-const myHeading = document.getElementById('myHeading');
+//Examples on selecting elements by ID
+
+//const myHeading = document.getElementById('myHeading');
+const myHeading = document.getElementsByTagName('h1')[0]; //tag name practice
 const myButton = document.getElementById('myButton');
 const myTextInput = document.getElementById('myTextInput');
 const reset = document.getElementById('reset');
