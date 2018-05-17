@@ -1,4 +1,4 @@
-//Examples on selecting elements by tag name
+//Examples on selecting elements by tag name.
 
 //selects all list items in the document
 const myList = document.getElementsByTagName('li');
