@@ -5,6 +5,21 @@ const descriptionP = document.querySelector('p.description');
 const descriptionButton = document.querySelector('button.description');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
+const removeItemButton = document.querySelector('button.removeItemButton');
+const listItems = document.getElementsByTagName('li');
+
+
+//iterates through the list items and applies callback functions for the specified event types
+// for(let i = 0; i < listItems.length; i++){
+//     listItems[i].addEventListener('mouseover', () => {
+//       listItems[i].textContent = listItems[i].textContent.toUpperCase();
+//     });
+//
+//     listItems[i].addEventListener('mouseout', () => {
+//       listItems[i].textContent = listItems[i].textContent.toLowerCase();
+//     });
+// }
+
 
 
 
@@ -43,4 +58,16 @@ addItemButton.addEventListener('click', () => {
   ul.appendChild(li);
 }
   addItemInput.value = '';
+})
+
+//removing last item on the list
+removeItemButton.addEventListener('click', () => {
+  //selecting the ul
+  let ul = document.getElementsByTagName('ul')[0];
+  //selecting the last list item
+  let li = document.querySelector('li:last-child');
+
+
+  ul.removeChild(li);
+
 })
