@@ -3,10 +3,12 @@ const listDiv = document.querySelector('.list');
 const descriptionInput = document.querySelector('input.description');
 const descriptionP = document.querySelector('p.description');
 const descriptionButton = document.querySelector('button.description');
+const listUl = listDiv.querySelector('ul');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
 const listItems = document.getElementsByTagName('li');
+const lis = listUl.children
 
 
 //iterates through the list items and applies callback functions for the specified event types
@@ -21,20 +23,24 @@ const listItems = document.getElementsByTagName('li');
 // }
 
    //Using the Event Bubbling method
-    listDiv.addEventListener('mouseover', (event) => {
+    // listDiv.addEventListener('click', (event) => {
+    //
+
       //using event.target.tagName, run the funcition only if it's a list item
-      if (event.target.tagName.toLowerCase() === 'li'){
+      // if (event.target.tagName.toLowerCase() === 'button' && event.target.parentNode.tagName === 'LI'){
         //using event.target, replace the textContent
-            event.target.textContent = event.target.textContent.toUpperCase();
-      }
-    });
+    //         let li = event.target.parentNode;
+    //         let ul = li.parentNode;
+    //         ul.removeChild(li);
+    //   }
+    // });
 
     //Same logic as above but in mouseout version
-    listDiv.addEventListener('mouseout', (event) => {
-      if (event.target.tagName.toLowerCase() === 'li'){
-            event.target.textContent = event.target.textContent.toLowerCase();
-      }
-    });
+    // listDiv.addEventListener('mouseout', (event) => {
+    //   if (event.target.tagName.toLowerCase() === 'li'){
+    //         event.target.textContent = event.target.textContent.toLowerCase();
+    //   }
+    // });
 
 
 
@@ -50,6 +56,59 @@ const listItems = document.getElementsByTagName('li');
 
 //   console.log(event.target);
 // })
+
+
+//^^^^^^^^^^^EXAMPLES COMMENTED OUT^^^^^^^^^^^^^^^^^^^^^^^
+
+function attatchListItemButtons(li){
+  let up = document.createElement('button');
+  up.className ='up';
+  up.textContent = 'Up';
+  li.appendChild (up);
+  let down = document.createElement('button');
+  down.className ='down';
+  down.textContent = 'Down'
+    li.appendChild (down);
+  let remove = document.createElement('button');
+  remove.className ='remove';
+  remove.textContent = 'Remove'
+    li.appendChild (remove);
+}
+
+//iterates thorugh the children list items and adds the buttons 
+for (let i = 0; i < lis.length; i += 1){
+  attatchListItemButtons(lis[i]);
+}
+
+listUl.addEventListener('click', (event) => {
+  if (event.target.tagName == 'BUTTON') {
+    if (event.target.className == 'remove'){
+      let li = event.target.parentNode;
+      let ul = li.parentNode;
+      ul.removeChild(li);
+    }
+    // moves the elements up the list
+    if (event.target.className == 'up'){
+      let li = event.target.parentNode;
+      let prevLi = li.previousElementSibling;
+      let ul = li.parentNode;
+
+      if (prevLi){
+      ul.insertBefore(li,prevLi);
+      }
+    }
+      //moves the elements down the list
+      if (event.target.className == 'down'){
+        let li = event.target.parentNode;
+        let afterLi = li.nextElementSibling;
+        let ul = li.parentNode;
+
+        if (afterLi){
+        ul.insertBefore(afterLi,li);
+        }
+    }
+  }
+})
 
 
 
@@ -72,24 +131,22 @@ descriptionButton.addEventListener('click', () => {
      descriptionP.innerHTML = descriptionInput.value + ':';
 })
 
-//Adding items on the list
-addItemButton.addEventListener('click', () => {
-  //selecting the ul
 
+
+
+addItemButton.addEventListener('click', () => {
   let ul = document.getElementsByTagName('ul')[0];
-  //creating a new list element
   let li = document.createElement('li');
-  //condition to prevent empty lists
-  if (addItemInput.value.length < 1 || addItemInput.value == ' '){
-    alert('Enter a letter or a word');
-  }else{
-  //store the input value inside the newly created item
+
   li.textContent = addItemInput.value;
-  //Add the list item onto the webpage inside ul tag
+  attatchListItemButtons(li);
   ul.appendChild(li);
-}
   addItemInput.value = '';
+
 })
+
+
+
 
 //removing last item on the list
 removeItemButton.addEventListener('click', () => {
