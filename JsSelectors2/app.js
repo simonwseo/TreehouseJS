@@ -20,6 +20,37 @@ const listItems = document.getElementsByTagName('li');
 //     });
 // }
 
+   //Using the Event Bubbling method
+    listDiv.addEventListener('mouseover', (event) => {
+      //using event.target.tagName, run the funcition only if it's a list item
+      if (event.target.tagName.toLowerCase() === 'li'){
+        //using event.target, replace the textContent
+            event.target.textContent = event.target.textContent.toUpperCase();
+      }
+    });
+
+    //Same logic as above but in mouseout version
+    listDiv.addEventListener('mouseout', (event) => {
+      if (event.target.tagName.toLowerCase() === 'li'){
+            event.target.textContent = event.target.textContent.toLowerCase();
+      }
+    });
+
+
+
+     // listDiv.addEventListener('mouseout', (event) => {
+     // listItems[i].textContent = listItems[i].textContent.toLowerCase();
+     // });
+
+
+//When any element is clicked, its information will be displayed in the console.
+
+// document.addEventListener('click', (event) => {
+//Because of even bubbling, when any child element of the document is clicked, the document's event handler will become triggered.
+
+//   console.log(event.target);
+// })
+
 
 
 
