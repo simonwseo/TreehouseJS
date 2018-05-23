@@ -12,7 +12,7 @@ const lis = listUl.children;
 const firstListItem = listUl.firstElementChild;
 const lastListItem = listUl.lastElementChild;
 
-function disableUpDown(li){
+disableUpDown = (li) =>{
 
   for (let i = 0; i < lis.length; i += 1){
   let parent = li[i].parentNode;
@@ -35,7 +35,7 @@ function disableUpDown(li){
 
 
 
-function attatchListItemButtons(li){
+attatchListItemButtons = (li) =>{
 
   let up = document.createElement('button');
     up.className ='up';
@@ -64,7 +64,7 @@ listUl.addEventListener('click', (event) => {
       let ul = li.parentNode;
 
       ul.removeChild(li);
-      disableUpDown(lis);
+
     }
     // moves the elements up the list
     if (event.target.className == 'up'){
@@ -74,7 +74,7 @@ listUl.addEventListener('click', (event) => {
 
       if (prevLi){
       ul.insertBefore(li,prevLi);
-      disableUpDown(lis);
+
       }
     }
       //moves the elements down the list
@@ -85,10 +85,11 @@ listUl.addEventListener('click', (event) => {
 
         if (afterLi){
         ul.insertBefore(afterLi,li);
-        disableUpDown(lis);
+
       }
     }
   }
+  disableUpDown(lis);
 })
 
 
@@ -115,8 +116,8 @@ addItemButton.addEventListener('click', () => {
   li.textContent = addItemInput.value;
   attatchListItemButtons(li);
   ul.appendChild(li);
-  disableUpDown(lis);
   addItemInput.value = '';
+  disableUpDown(lis);
 })
 
 
