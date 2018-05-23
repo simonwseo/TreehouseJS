@@ -12,32 +12,6 @@ const lis = listUl.children;
 const firstListItem = listUl.firstElementChild;
 const lastListItem = listUl.lastElementChild;
 
-// function disableUpDown(li){
-//
-//
-//   let parent = li.parentNode;
-//   let first = parent.firstElementChild;
-//   let last = parent.lastElementChild;
-//   let bttnUp = li.querySelector('button.up');
-//   let bttnDown = li.querySelector('button.down');
-//
-//
-//     if (li == first){
-//     bttnUp.disabled = true;
-//     }else if (li == last){
-//     bttnDown.disabled = true;
-//     }else{
-//       bttnUp.disabled = false;
-//       bttnDown.disabled = false;
-//     }
-// }
-
-
-//
-// for (let i = 0; i < lis.length; i += 1){
-//     disableUpDown(lis[i]);
-// }
-
 function disableUpDown(li){
 
   for (let i = 0; i < lis.length; i += 1){
