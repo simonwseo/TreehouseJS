@@ -13,7 +13,6 @@ const firstListItem = listUl.firstElementChild;
 const lastListItem = listUl.lastElementChild;
 
 disableUpDown = (li) =>{
-
   for (let i = 0; i < lis.length; i += 1){
   let parent = li[i].parentNode;
   let first = parent.firstElementChild;
@@ -36,6 +35,7 @@ disableUpDown = (li) =>{
 
 
 attatchListItemButtons = (li) =>{
+
 
   let up = document.createElement('button');
     up.className ='up';
@@ -68,6 +68,8 @@ listUl.addEventListener('click', (event) => {
     }
     // moves the elements up the list
     if (event.target.className == 'up'){
+
+        debugger;
       let li = event.target.parentNode;
       let prevLi = li.previousElementSibling;
       let ul = li.parentNode;
